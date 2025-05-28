@@ -4,6 +4,7 @@ const userController=require("../controllers/User")
 const error=require("../middlewares/error")
 const router = express.Router();
 
+// main path /api/users +
 
 router.post('/createadmin', userController.createAdmin, error);
 router.put('/clearcache', isAuth, userController.clearCache, error);

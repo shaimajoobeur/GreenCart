@@ -6,11 +6,13 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true, unique: true, index: true, dropDups: true},
   password: { type: String, required: true },
   isAdmin: { type: Boolean, required: true, default: false },
+  role: { type: String, enum: [ "consumer", "producer", ""], default: "producer", required: true },
   points:{type:Number,required:true,default:0},
   favoris:[{
     category:{type:String,required:false},
     indicator:{type:Number,required:true}
-  }]
+  }],
+  products: [{}]
 });
 
 
@@ -23,6 +25,7 @@ userSchema.methods.generateAuth = function () {
       name: this.name,
       email: this.email,
       isAdmin: this.isAdmin,
+      role: this.role,
       points:this.points
     },
     process.env.JWT_SECRET,
