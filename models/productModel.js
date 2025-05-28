@@ -17,7 +17,12 @@ const productSchema = new mongoose.Schema({
   points_price:{ type: Number, default: 0, required: true },
   category: { type: String, required: true },
   impact: { type: Number, default: 0, required: true },
-  provenance : { type: String, required: true },
+  provenances : [
+    {
+      name: { type:String, required:false },
+      indicator: { type:Number, required:true }
+    }
+  ],
   regions: [{ type: String, required: true }],
   countInStock: { type: Number, default: 0, required: true },
   description: { type: String, required: true },
