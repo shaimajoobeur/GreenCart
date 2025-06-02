@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-
-
 const orderItemSchema = new mongoose.Schema({
   name: { type: String, required: true },
   qty: { type: Number, required: true },
@@ -13,6 +11,17 @@ const orderItemSchema = new mongoose.Schema({
     required: true
   },
 });
+
+const reviewSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, default: 0 },
+    comment: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const orderSchema = new mongoose.Schema({
   consumer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -37,6 +46,7 @@ const orderSchema = new mongoose.Schema({
   paidAt: { type: Date },
   isDelivered: { type: Boolean, default: false },
   deliveredAt: { type: Date },
+  reviews: [reviewSchema]
 }, {
   timestamps: true
 });

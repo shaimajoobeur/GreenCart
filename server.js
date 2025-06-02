@@ -4,6 +4,7 @@ require('dotenv').config();
 const userRoute=require("./routes/userRoute");
 const productRoute = require("./routes/productRoute")
 const orderRoute = require("./routes/orderRoute")
+const paymentRoute = require("./routes/paymentRoute")
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
+app.use('/api/payment',paymentRoute);
 
 // app.use(('/api/products', productsRoute);
 

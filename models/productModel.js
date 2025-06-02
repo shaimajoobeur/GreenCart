@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema({
   impact: { type: Number, default: 0, required: true },
   provenances : [
     {
-      name: { type:String, required:false },
+      name: { type:String, required:true },
       indicator: { type:Number, required:true }
     }
   ],
@@ -40,4 +40,4 @@ const productSchema = new mongoose.Schema({
 
 const productModel = mongoose.model('Product', productSchema);
 
-module.exports=productModel;
+module.exports = productModel;
