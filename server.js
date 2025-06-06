@@ -5,8 +5,19 @@ const userRoute=require("./routes/userRoute");
 const productRoute = require("./routes/productRoute")
 const orderRoute = require("./routes/orderRoute")
 const paymentRoute = require("./routes/paymentRoute")
+const cors = require('cors');
 
 const app = express();
+
+
+app.use(cors());
+
+
+app.use(cors({
+   origin: 'http://localhost:3000', // frontend URL
+   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+   credentials: true
+ }));
 
 //appel au middlewares 
 app.use(express.json())

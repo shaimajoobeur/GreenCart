@@ -86,7 +86,7 @@ exports.signin=async (req, res,next) => {
       email: signinUser.email,
       isAdmin: signinUser.isAdmin,
       points: signinUser.points,
-      token:  signinUser.generateAuth()
+      token:  `Bearer ${signinUser.generateAuth()}`
     });
   }
   catch(ex)
